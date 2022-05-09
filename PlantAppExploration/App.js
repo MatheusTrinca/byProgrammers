@@ -10,6 +10,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {StatusBar} from 'react-native';
 
 //Screens
 import {PlantDetail} from './screens';
@@ -27,7 +28,7 @@ const App = () => {
         }}
         initialRouteName={'Home'}>
         {/* Tabs */}
-        <Stack.Screen name="Home" component={Tabs} />
+        <Stack.Screen name="HomeScreen" component={Tabs} />
 
         {/* Screens */}
         <Stack.Screen
@@ -43,3 +44,5 @@ const App = () => {
 export default () => {
   return <App />;
 };
+
+// 21:15

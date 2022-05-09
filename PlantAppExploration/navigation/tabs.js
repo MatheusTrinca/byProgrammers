@@ -6,13 +6,6 @@ import {Home} from '../screens';
 
 const Tab = createBottomTabNavigator();
 
-const tabOptions = {
-  showLabel: false,
-  style: {
-    height: '10%',
-  },
-};
-
 const CameraButton = () => {
   return (
     <View
@@ -39,8 +32,10 @@ const CameraButton = () => {
 const Tabs = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={tabOptions}
       screenOptions={({route}) => ({
+        showLabel: false,
+        tabBarStyle: {height: '10%'},
+        tabBarShowLabel: false,
         headerShown: false,
         tabBarIcon: ({focused}) => {
           const tintColor = focused ? COLORS.primary : COLORS.gray;

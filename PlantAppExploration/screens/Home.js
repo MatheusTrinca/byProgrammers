@@ -1,8 +1,88 @@
-import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
-import {COLORS, FONTS, icons, SIZES} from '../constants';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from 'react-native';
+import {COLORS, FONTS, icons, SIZES, images} from '../constants';
 
 const Home = () => {
+  const [newPlants, setNewPlants] = useState([
+    {
+      id: 0,
+      name: 'Planta 1',
+      favorite: false,
+      img: images.plant1,
+    },
+    {
+      id: 1,
+      name: 'Planta 2',
+      favorite: true,
+      img: images.plant2,
+    },
+    {
+      id: 2,
+      name: 'Planta 3',
+      favorite: false,
+      img: images.plant3,
+    },
+    {
+      id: 3,
+      name: 'Planta 4',
+      favorite: false,
+      img: images.plant4,
+    },
+  ]);
+
+  // Render New Items
+  function renderNewPlants(item, index) {
+    return (
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginHorizontal: SIZES.base,
+        }}>
+        <Image
+          source={item.img}
+          resizeMode="cover"
+          style={{width: SIZES.width * 0.23, height: '85%', borderRadius: 15}}
+        />
+        <View
+          style={{
+            position: 'absolute',
+            bottom: '17%',
+            right: 0,
+            backgroundColor: COLORS.primary,
+            paddingHorizontal: SIZES.base,
+            borderTopLeftRadius: 10,
+            borderBottomLeftRadius: 10,
+          }}>
+          <Text style={{color: COLORS.white, ...FONTS.body4}}>{item.name}</Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => console.log('Favorite on Pressed ')}
+          style={{
+            position: 'absolute',
+            top: '15%',
+            left: 7,
+          }}>
+          <Image
+            source={item.favorite ? icons.heartRed : icons.heartGreenOutline}
+            resizeMode="contain"
+            style={{
+              width: 20,
+              height: 20,
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       {/* New Plants */}
@@ -16,8 +96,7 @@ const Home = () => {
           }}>
           <View
             style={{
-              marginTop: SIZES.padding * 2,
-              marginHorizontal: SIZES.padding,
+              margin: SIZES.padding * 0.9,
             }}>
             <View
               style={{
@@ -33,10 +112,19 @@ const Home = () => {
                   resizeMode="contain"
                   style={{
                     width: 20,
-                    heigh: 20,
+                    height: 20,
                   }}
                 />
               </TouchableOpacity>
+            </View>
+            <View style={{marginTop: SIZES.base}}>
+              <FlatList
+                data={newPlants}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({item, index}) => renderNewPlants(item, index)}
+              />
             </View>
           </View>
         </View>
