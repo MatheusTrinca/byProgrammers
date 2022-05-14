@@ -131,7 +131,63 @@ const Home = () => {
       </View>
 
       {/* Today's Share */}
-      <View style={{height: '50%', backgroundColor: COLORS.lightGray}} />
+      <View style={{height: '50%', backgroundColor: COLORS.lightGray}}>
+        <View
+          style={{
+            flex: 1,
+            borderBottomLeftRadius: 15,
+            borderBottomRightRadius: 15,
+            backgroundColor: COLORS.white,
+          }}>
+          <View
+            style={{marginTop: SIZES.font, marginHorizontal: SIZES.padding}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <Text style={{color: COLORS.secondary, ...FONTS.h2}}>
+                Today's Share
+              </Text>
+              <TouchableOpacity onPress={() => console.log('See All Pressed')}>
+                <Text style={{color: COLORS.secondary, ...FONTS.body3}}>
+                  See All
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                height: '88%',
+                marginTop: SIZES.base,
+              }}>
+              <View style={{flex: 1, backgroundColor: 'yellow'}}>
+                <TouchableOpacity
+                  style={{flex: 1}}
+                  onPress={() => console.log('Image Pressed')}>
+                  <Image
+                    source={images.plant5}
+                    resizeMode="cover"
+                    style={{width: '100%', height: '100%', borderRadius: 20}}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{flex: 1, marginTop: SIZES.font}}
+                  onPress={() => console.log('Image Pressed')}>
+                  <Image
+                    source={images.plant6}
+                    resizeMode="cover"
+                    style={{width: '100%', height: '100%', borderRadius: 20}}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={{flex: 1, backgroundColor: 'red'}} />
+            </View>
+          </View>
+        </View>
+      </View>
 
       {/* Added Friend */}
       <View style={{height: '20%', backgroundColor: COLORS.lightGray}} />
